@@ -1,0 +1,21 @@
+[package]
+name = "rust-audio-spectrum"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+hound = "3.5"
+ringbuf = "0.4.1"
+clap = {version = "4.0", features = ["derive"]}
+cpal = "0.15.3"
+
+[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "netbsd"))'.dependencies]
+alsa = "0.9"
+libc = "0.2"
+jack = { version = "0.13.0", optional = true }
+
+
+[[bin]]
+name = "beep"
+path = "src/beep.rs"
